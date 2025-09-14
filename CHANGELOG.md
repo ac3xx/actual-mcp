@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Features
+
+* Allow configuring amount formatting via `ACTUAL_CURRENCY` and `ACTUAL_LOCALE` environment variables
+
 ## [1.2.0](https://github.com/s-stefanov/actual-mcp/compare/v1.1.0...v1.2.0) (2025-09-05)
 
 
