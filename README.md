@@ -112,6 +112,11 @@ export ACTUAL_PASSWORD="your-password"
 
 # Specific budget to use (optional)
 export ACTUAL_BUDGET_SYNC_ID="your-budget-id"
+
+# Currency formatting (optional)
+export ACTUAL_CURRENCY="USD"
+# Locale for currency formatting (optional)
+export ACTUAL_LOCALE="en-US"
 ```
 
 ## Usage with Claude Desktop
@@ -144,7 +149,9 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "USD",
+        "ACTUAL_LOCALE": "en-US"
       }
     }
   }
@@ -163,7 +170,9 @@ Add the following to your configuration...
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "https://your-actual-server.com",
         "ACTUAL_ENC_PASSWORD": "your-budget-password",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "USD",
+        "ACTUAL_LOCALE": "en-US"
       }
     }
   }
@@ -198,7 +207,9 @@ Add the following to your configuration...
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_ENC_PASSWORD": "your-budget-password",
         "ACTUAL_SERVER_URL": "https://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "USD",
+        "ACTUAL_LOCALE": "en-US"
       }
     }
   }
@@ -222,6 +233,8 @@ docker run -i --rm \
   -e ACTUAL_PASSWORD="your-password" \
   -e ACTUAL_SERVER_URL="http://your-actual-server.com" \
   -e ACTUAL_BUDGET_SYNC_ID="your-budget-id" \
+  -e ACTUAL_CURRENCY="USD" \
+  -e ACTUAL_LOCALE="en-US" \
   -e BEARER_TOKEN="your-bearer-token" \
   sstefanov/actual-mcp:latest \
   --sse --enable-write --enable-bearer
