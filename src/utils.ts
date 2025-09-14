@@ -31,9 +31,11 @@ export function formatAmount(amount: number | undefined | null): string {
 
   // Convert from cents to dollars
   const dollars = amount / 100;
-  return new Intl.NumberFormat('en-US', {
+  const locale = process.env.ACTUAL_LOCALE || 'en-US';
+  const currency = process.env.ACTUAL_CURRENCY || 'USD';
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: 'USD',
+    currency,
   }).format(dollars);
 }
 
