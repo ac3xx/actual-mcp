@@ -5,8 +5,17 @@ const originalCurrency = process.env.ACTUAL_CURRENCY;
 const originalLocale = process.env.ACTUAL_LOCALE;
 
 afterEach(() => {
-  process.env.ACTUAL_CURRENCY = originalCurrency;
-  process.env.ACTUAL_LOCALE = originalLocale;
+  if (originalCurrency !== undefined) {
+    process.env.ACTUAL_CURRENCY = originalCurrency;
+  } else {
+    delete process.env.ACTUAL_CURRENCY;
+  }
+
+  if (originalLocale !== undefined) {
+    process.env.ACTUAL_LOCALE = originalLocale;
+  } else {
+    delete process.env.ACTUAL_LOCALE;
+  }
 });
 
 describe('formatAmount', () => {
@@ -20,5 +29,12 @@ describe('formatAmount', () => {
     process.env.ACTUAL_CURRENCY = 'EUR';
     process.env.ACTUAL_LOCALE = 'de-DE';
     expect(formatAmount(12345)).toBe('123,45\u00A0€');
+  });
+
+  it('falls back to default formatting with invalid locale/currency', () => {
+    process.env.ACTUAL_CURRENCY = 'INVALID';
+    process.env.ACTUAL_LOCALE = 'invalid-locale';
+    // Should fall back to USD formatting
+    expect(formatAmount(12345)).toBe('$123.45');
   });
 });

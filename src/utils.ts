@@ -33,10 +33,19 @@ export function formatAmount(amount: number | undefined | null): string {
   const dollars = amount / 100;
   const locale = process.env.ACTUAL_LOCALE || 'en-US';
   const currency = process.env.ACTUAL_CURRENCY || 'USD';
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-  }).format(dollars);
+  
+  try {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency,
+    }).format(dollars);
+  } catch (e) {
+    console.warn(`Invalid locale or currency provided. Falling back to default formatting. Locale: ${locale}, Currency: ${currency}`);
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(dollars);
+  }
 }
 
 // Helper to calculate start/end date strings for the N most recent months
