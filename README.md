@@ -112,7 +112,15 @@ export ACTUAL_PASSWORD="your-password"
 
 # Specific budget to use (optional)
 export ACTUAL_BUDGET_SYNC_ID="your-budget-id"
+
+# Currency and locale formatting (defaults: USD, en-US)
+export ACTUAL_CURRENCY="USD"
+export ACTUAL_LOCALE="en-US"
 ```
+
+By default amounts are formatted using USD and the `en-US` locale. To change this behavior,
+set `ACTUAL_CURRENCY` and `ACTUAL_LOCALE` to your preferred values, for example `ACTUAL_CURRENCY=EUR` and
+`ACTUAL_LOCALE=de-DE`.
 
 ## Usage with Claude Desktop
 
@@ -145,7 +153,9 @@ Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when 
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
         "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
-        "ACTUAL_ENC_PASSWORD": "your-budget-password"
+        "ACTUAL_ENC_PASSWORD": "your-budget-password",
+        "ACTUAL_CURRENCY": "EUR",
+        "ACTUAL_LOCALE": "de-DE"
       }
     }
   }
@@ -164,7 +174,9 @@ Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when 
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "https://your-actual-server.com",
         "ACTUAL_ENC_PASSWORD": "your-budget-password",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "EUR",
+        "ACTUAL_LOCALE": "de-DE"
       }
     }
   }
@@ -192,6 +204,10 @@ Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when 
         "ACTUAL_SERVER_URL=https://your-actual-server.com",
         "-e",
         "ACTUAL_BUDGET_SYNC_ID=your-budget-id",
+        "-e",
+        "ACTUAL_CURRENCY=EUR",
+        "-e",
+        "ACTUAL_LOCALE=de-DE",
         "sstefanov/actual-mcp:latest",
         "--enable-write"
       ],
@@ -200,7 +216,9 @@ Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when 
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_ENC_PASSWORD": "your-budget-password",
         "ACTUAL_SERVER_URL": "https://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "EUR",
+        "ACTUAL_LOCALE": "de-DE"
       }
     }
   }
@@ -224,6 +242,8 @@ docker run -i --rm \
   -e ACTUAL_PASSWORD="your-password" \
   -e ACTUAL_SERVER_URL="http://your-actual-server.com" \
   -e ACTUAL_BUDGET_SYNC_ID="your-budget-id" \
+  -e ACTUAL_CURRENCY="EUR" \
+  -e ACTUAL_LOCALE="de-DE" \
   -e BEARER_TOKEN="your-bearer-token" \
   sstefanov/actual-mcp:latest \
   --sse --enable-write --enable-bearer
