@@ -125,6 +125,21 @@ If your Actual setup requires a different password to unlock the local/encrypted
 export ACTUAL_BUDGET_ENCRYPTION_PASSWORD="your-encryption-password"
 ```
 
+Optional: currency and locale formatting
+
+By default, all monetary amounts are formatted in USD with en-US locale. You can customize this to match your preferred currency and regional formatting:
+
+```bash
+# Currency formatting (defaults to USD and en-US)
+export ACTUAL_CURRENCY="EUR"
+export ACTUAL_LOCALE="de-DE"
+
+# Examples:
+# - Euro: ACTUAL_CURRENCY=EUR, ACTUAL_LOCALE=de-DE
+# - British Pound: ACTUAL_CURRENCY=GBP, ACTUAL_LOCALE=en-GB
+# - Japanese Yen: ACTUAL_CURRENCY=JPY, ACTUAL_LOCALE=ja-JP
+```
+
 ## Usage with Claude Desktop
 
 To use this server with Claude Desktop, add it to your Claude configuration:
@@ -155,7 +170,9 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "USD",
+        "ACTUAL_LOCALE": "en-US"
       }
     }
   }
@@ -173,7 +190,9 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_CURRENCY": "USD",
+        "ACTUAL_LOCALE": "en-US"
       }
     }
   }
@@ -199,6 +218,10 @@ Add the following to your configuration...
         "ACTUAL_SERVER_URL=https://your-actual-server.com",
         "-e",
         "ACTUAL_BUDGET_SYNC_ID=your-budget-id",
+        "-e",
+        "ACTUAL_CURRENCY=USD",
+        "-e",
+        "ACTUAL_LOCALE=en-US",
         "sstefanov/actual-mcp:latest",
         "--enable-write"
       ]
@@ -224,6 +247,8 @@ docker run -i --rm \
   -e ACTUAL_PASSWORD="your-password" \
   -e ACTUAL_SERVER_URL="http://your-actual-server.com" \
   -e ACTUAL_BUDGET_SYNC_ID="your-budget-id" \
+  -e ACTUAL_CURRENCY="USD" \
+  -e ACTUAL_LOCALE="en-US" \
   -e BEARER_TOKEN="your-bearer-token" \
   sstefanov/actual-mcp:latest \
   --sse --enable-write --enable-bearer

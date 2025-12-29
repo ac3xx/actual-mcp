@@ -25,15 +25,20 @@ export function formatDate(date: Date | string | undefined | null): string {
 
 /**
  * Format currency amounts for display
+ * Uses ACTUAL_CURRENCY and ACTUAL_LOCALE environment variables if set,
+ * otherwise defaults to USD and en-US
  */
 export function formatAmount(amount: number | undefined | null): string {
   if (amount === undefined || amount === null) return 'N/A';
 
   // Convert from cents to dollars
   const dollars = amount / 100;
-  return new Intl.NumberFormat('en-US', {
+  const currency = process.env.ACTUAL_CURRENCY || 'USD';
+  const locale = process.env.ACTUAL_LOCALE || 'en-US';
+
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: 'USD',
+    currency: currency,
   }).format(dollars);
 }
 

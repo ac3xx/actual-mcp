@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Features
+
+* Add configurable currency and locale formatting via ACTUAL_CURRENCY and ACTUAL_LOCALE environment variables. Amounts now respect runtime configuration instead of always using USD and en-US formatting.
+
 ## [1.5.0](https://github.com/s-stefanov/actual-mcp/compare/v1.4.0...v1.5.0) (2025-11-10)
 
 
