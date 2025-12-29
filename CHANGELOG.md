@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Features
+
+* Support configurable currency and locale via `ACTUAL_CURRENCY` and `ACTUAL_LOCALE` environment variables.
+
 ## [1.5.0](https://github.com/s-stefanov/actual-mcp/compare/v1.4.0...v1.5.0) (2025-11-10)
 
 

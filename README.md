@@ -114,6 +114,10 @@ export ACTUAL_PASSWORD="your-password"
 
 # Specific budget to use (optional)
 export ACTUAL_BUDGET_SYNC_ID="your-budget-id"
+
+# Locale and Currency configuration (optional)
+export ACTUAL_LOCALE="en-US"   # default: en-US
+export ACTUAL_CURRENCY="USD"   # default: USD
 ```
 
 Optional: separate encryption budget password
@@ -155,7 +159,9 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_LOCALE": "en-US",
+        "ACTUAL_CURRENCY": "USD"
       }
     }
   }
@@ -173,7 +179,9 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_LOCALE": "en-US",
+        "ACTUAL_CURRENCY": "USD"
       }
     }
   }
@@ -199,6 +207,10 @@ Add the following to your configuration...
         "ACTUAL_SERVER_URL=https://your-actual-server.com",
         "-e",
         "ACTUAL_BUDGET_SYNC_ID=your-budget-id",
+        "-e",
+        "ACTUAL_LOCALE=en-US",
+        "-e",
+        "ACTUAL_CURRENCY=USD",
         "sstefanov/actual-mcp:latest",
         "--enable-write"
       ]
